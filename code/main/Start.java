@@ -13,25 +13,19 @@ class Start {
         // ApplicationContext context;
         // context = SpringApplication.run(Setup.class);
         
-        Car c = new Car();
-        System.out.println( c instanceof Car );     // true
-        System.out.println( c instanceof Vehicle ); // true
-        System.out.println( c instanceof Object );  // true
-        
-        
-        Vehicle[] a = { new Car(), new Truck(), new Car(),
-                        new Truck(), new Car(), new Car() };
-        int count= 0;
-        
-        // Enhance for loop
-        for (Vehicle v : a) {
-            if (v instanceof Car) {
-                count++;
-            }
-        }
-        System.out.println(count);
+        Student s = new Student();
+        s.name = "Hermione G";
+        s.gender = Gender.FEMALE;
+        System.out.println(s.gender);
     }
 }
+
+class Student {
+    String name;
+    Gender gender;
+}
+
+enum Gender { MALE, FEMALE }
 
 class Vehicle {  }
 
