@@ -13,15 +13,25 @@ class Start {
     public static void main(String[] args) {
         // ApplicationContext context;
         // context = SpringApplication.run(Setup.class);
-        RangeStorage r = new RangeStorage();
+        RangeIterable r = new RangeIterable();
         r.add(new Range(3, 8));
         r.add(new Range(4, 5));
         r.add(new Range(2, 6));
         
-        while(r.hasNext()) {
-            System.out.println(r.next());
+        for (Object e : r) {
+            System.out.println(e);
         }
     }
+}
+
+class RangeIterable implements Iterable {
+    public Iterator iterator() {
+        return storage;
+    }
+    void add(Range r) {
+        storage.add(r);
+    }
+    RangeStorage storage = new RangeStorage();
 }
 
 class RangeStorage implements Iterator {
