@@ -22,8 +22,10 @@ class Start {
         Vehicle[] a = { new Car(), new Truck(), new Car(),
                         new Truck(), new Car(), new Car() };
         int count= 0;
-        for (int i = 0; i < a.length; i++) {
-            if(a[i] instanceof Car) {
+        
+        // Enhance for loop
+        for (Vehicle v : a) {
+            if (v instanceof Car) {
                 count++;
             }
         }
