@@ -13,12 +13,12 @@ class Start {
         // ApplicationContext context;
         // context = SpringApplication.run(Setup.class);
         
-        Student s = new Student();
-        s.name = "Hermione G";
-        s.gender = Gender.FEMALE;
-        System.out.println(s.gender);
+        Player p = new Player("David B", 7);
+        System.out.println(p);
     }
 }
+
+record Player(String name, int number) { }
 
 class Student {
     String name;
