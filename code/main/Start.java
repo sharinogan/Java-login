@@ -1,5 +1,6 @@
 package main;
 
+import java.util.Iterator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -12,11 +13,41 @@ class Start {
     public static void main(String[] args) {
         // ApplicationContext context;
         // context = SpringApplication.run(Setup.class);
+        RangeStorage r = new RangeStorage();
+        r.add(new Range(3, 8));
+        r.add(new Range(4, 5));
+        r.add(new Range(2, 6));
         
-        Player p = new Player("David B", 7);
-        System.out.println(p);
+        while(r.hasNext()) {
+            System.out.println(r.next());
+        }
     }
 }
+
+class RangeStorage implements Iterator {
+    public Object next() {
+        // ver 1
+        // Object o = data[count];
+        // count++;
+        // return o;
+        
+        // ver 2
+        return data[count++];
+    }
+    int count = 0;
+    public boolean hasNext() {
+        return count < size ? true : false;
+    }
+    
+    Range[] data = new Range[10];
+    int size = 0;
+    void add(Range r) {
+        data[size] = r;
+        size++;
+    }
+}
+
+record Range(int start, int finish) {  }
 
 record Player(String name, int number) { }
 
